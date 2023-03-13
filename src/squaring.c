@@ -7,8 +7,12 @@ void squaring(int *a, int n);
 
 int main()
 {
-    int n, data[NMAX];
-    input(data, n);
+    int n = 0;
+    int data[NMAX];
+    int x = input(data, &n);
+        if (x != 1 || x < 0) {
+            printf("n/a\n");
+        }
     squaring(data, n);
     output(data, n);
 
@@ -17,21 +21,26 @@ int main()
 
 int input(int *a, int *n)
 {
-    scanf("%d", n);
-    for(int *p = a; p - a < *n; p++)
-    {
-        scanf("%d", p);
-    }
+    scanf("%d\n", n); 
+        for(int *p = a; p - a < *n; p++){
+            int y = scanf("%d", p);
+        }
+    return 0;
 }
 
 void output(int *a, int n)
-{
-    //NOTHING
+{   
+    for(int *p = a; p - a < n - 1; p++) 
+        printf("%d ", *p);  
+            printf("%d", *(a + n - 1));
+    
+
 }
 
 void squaring(int *a, int n)
 {
-    //NOTHING
+    for(int *p = a; p - a < n; p++)
+    *p = *p * *p;
 }
 
 
