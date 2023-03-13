@@ -9,10 +9,7 @@ int main()
 {
     int n = 0;
     int data[NMAX];
-    int x = input(data, &n);
-        if (x != 1 || x < 0) {
-            printf("n/a\n");
-        }
+    input(data, &n);
     squaring(data, n);
     output(data, n);
 
@@ -23,7 +20,7 @@ int input(int *a, int *n)
 {
     scanf("%d\n", n); 
         for(int *p = a; p - a < *n; p++){
-            int y = scanf("%d", p);
+            scanf("%d", p);
         }
     return 0;
 }
