@@ -8,19 +8,33 @@ void squaring(int *a, int n);
 int main() {
     int n = 0;
     int data[NMAX];
-    input(data, &n);
-    squaring(data, n);
-    output(data, n);
-
+    int x = input(data, &n);
+    if (x == 1) {
+        if (x == 1) {
+            printf("n/a\n");
+        }
+    } else {
+        squaring(data, n);
+        output(data, n);
+    }
     return 0;
 }
 
 int input(int *a, int *n) {
-    scanf("%d\n", n);
-    for (int *p = a; p - a < *n; p++) {
-        scanf("%d", p);
+    int y, x;
+    int z = 0;
+    x = scanf("%d.%d\n", n, &y);
+    if (x != 1 || *n <= 0 || *n > NMAX) {
+        z = 1;
+    } else {
+        for (int *p = a; p - a < *n; p++) {
+            x = scanf("%d.%d", p, &y);
+            if (x != 1) {
+                z = 1;
+            }
+        }
     }
-    return 0;
+    return z;
 }
 
 void output(int *a, int n) {
