@@ -11,15 +11,15 @@
 
         0
 */
-
+#include <math.h>
 #include <stdio.h>
-#define NMAX 10
+#define NMAX 30
 
 int input(int *a, int *n);
-void output(int *a, int n);
 int max(int *a, int n);
 double mean(int *a, int n);
 double variance(int *a, int n);
+int treb(int *a, int n);
 
 int main() {
     int n, data[NMAX];
@@ -27,7 +27,8 @@ int main() {
     if (x == 1) {
         printf("n/a\n");
     } else {
-        output(data, n);
+        int z = treb(data, n);
+        printf("%d", z);
     }
     return 0;
 }
@@ -47,11 +48,6 @@ int input(int *a, int *n) {
         }
     }
     return z;
-}
-
-void output(int *a, int n) {
-    int x = max(a, n);
-    printf("%d", x);
 }
 
 int max(int *a, int n) {
@@ -78,4 +74,13 @@ double variance(int *a, int n) {
     for (int *p = a; p - a < n; p++) variance_v = variance_v + (((*p - x) * (*p - x)) / n);
 
     return variance_v;
+}
+
+int treb(int *a, int n) {
+    double x = mean(a, n);
+    double y = variance(a, n);
+    for (int *p = a; p - a < n; p++) {
+        if (*p % 2 == 0 && *p >= x && *p <= x + 3 * sqrt(y) && *p != 0) return *p;
+    }
+    return 0;
 }
